@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Vita - Treinamento Clínico</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f8ff;
+            color: #16325c;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(6, 18, 45, .92);
+            backdrop-filter: blur(14px);
+            z-index: 999;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #14b8ff;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, #14b8ff, #06d6a0);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .4s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            padding: 160px 70px 80px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: linear-gradient(rgba(4, 15, 35, .8), rgba(4, 15, 35, .8)),
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1400');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+        }
+
+        .mockup {
+            background: rgba(255, 255, 255, .1);
+            padding: 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
+        }
+
+        .mockup img {
+            width: 100%;
+            border-radius: 20px;
+            height: 350px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .section {
+            padding: 100px 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #0b2d63;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #5f7698;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+            transition: .4s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #14b8ff, #06d6a0);
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, .25);
+        }
+
+        .card h3 {
+            margin: 20px 0;
+            color: #0b2d63;
+        }
+
+        .card p {
+            line-height: 1.9;
+        }
+
+        .dashboard {
+            max-width: 1100px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+        }
+
+        .progress {
+            width: 100%;
+            height: 22px;
+            background: #e8eef9;
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .bar {
+            height: 100%;
+            width: 87%;
+            background: linear-gradient(90deg, #14b8ff, #06d6a0);
+        }
+
+        .stats {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .stat {
+            background: #f4f8ff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .stat h2 {
+            font-size: 42px;
+            color: #14b8ff;
+            margin-bottom: 10px;
+        }
+
+        .prototipo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            background: #fff;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+        }
+
+        .galeria-fotos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .foto-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .foto-box p {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0b2d63;
+        }
+
+        .foto-box img {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #f1f5f9;
+            padding: 5px;
+        }
+
+        .prototipo-info h3 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #0b2d63;
+        }
+
+        .prototipo-info p {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .lista {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .item {
+            background: #eef6ff;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* SEÇÃO DE CONTATO ATUALIZADA */
+        .footer-contato {
+            background: #06122d;
+            color: #fff;
+            padding: 80px 40px 40px;
+            text-align: center;
+        }
+
+        .contato-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .link-social {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .link-social:hover {
+            background: #14b8ff;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(20, 184, 255, 0.3);
+        }
+
+        .footer-contato p {
+            color: #a0aec0;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
+            z-index: 9999;
+        }
+
+        .chat-header {
+            background: linear-gradient(90deg, #14b8ff, #2563eb);
+            color: #fff;
+            padding: 16px;
+            font-weight: 700;
+        }
+
+        .chat-body {
+            padding: 16px;
+            height: 260px;
+            overflow-y: auto;
+            background: #f4f8ff;
+        }
+
+        .msg {
+            background: #dcefff;
+            padding: 12px 14px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .chat-footer {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        /* MODAL FULLSCREEN DO QUIZ */
+        .modal-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #f4f8ff;
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .quiz-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .questao {
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .questao.ativa {
+            display: block;
+        }
+
+        .questao h3 {
+            margin-bottom: 20px;
+            color: #0b2d63;
+            font-size: 20px;
+        }
+
+        .opcoes-lista {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .opcao-btn {
+            width: 100%;
+            text-align: left;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .opcao-btn:hover {
+            background: #eef6ff;
+            border-color: #14b8ff;
+        }
+
+        .opcao-btn.selecionada {
+            background: #14b8ff;
+            color: white;
+            border-color: #14b8ff;
+        }
+
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .close-quiz {
+            padding: 10px 20px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* MODAL DE LOGIN (TELA ENTRAR) */
+        .modal-login {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 15, 35, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .login-box h3 {
+            color: #0b2d63;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            color: #5f7698;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .input-grupo {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-grupo label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0b2d63;
+            margin-bottom: 8px;
+        }
+
+        .input-grupo input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            outline: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .input-grupo input:focus {
+            border-color: #14b8ff;
+        }
+
+        .fechar-login {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f4f8ff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Modal Genérico para as Funções */
+        .modal-funcao {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 15, 35, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .modal-funcao-corpo {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .fechar-modal-funcao {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f4f8ff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        @media(max-width:900px){
+            .hero, .prototipo-container {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 150px 25px 80px;
+            }
+            .hero h1 {
+                font-size: 42px;
+            }
+            .section {
+                padding: 80px 20px;
+            }
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .chatbot {
+                width: 95%;
+                right: 10px;
+            }
+            .lista {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">💉 Projeto Vita</div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#recursos">Recursos</a>
+            <a href="#prototipos">Soluções</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#contato">Contato</a>
+            <button class="btn" onclick="abrirLogin()">Entrar</button>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div>
+            <h1>Aprenda.<br>Pratique.<br>Evolua.</h1>
+            <p>Plataforma moderna para treinamentos clínicos, simulações médicas e acompanhamento de desempenho profissional com validação prática.</p>
+            <div class="hero-buttons">
+                <button class="btn" onclick="abrirQuiz()">Começar Agora (Teste Rápido)</button>
+                <button class="btn btn-secondary" onclick="window.location.href='#prototipos'">Ver Soluções</button>
+            </div>
+        </div>
+        <div class="mockup">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800" alt="Simulação Prática de Saúde">
+        </div>
+    </section>
+
+    <section class="section" id="recursos">
+        <div class="section-title">
+            <h2>Recursos Inteligentes</h2>
+            <p>Clique nos blocos abaixo para testar as ferramentas interativas desenvolvidas para sua evolução.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card" onclick="abrirModalFunconalidad('treinamento')">
+                <h3>🎓 Treinamento Virtual</h3>
+                <p>Aulas dinâmicas e teóricas com suporte multimídia avançado.</p>
+            </div>
+
+            <div class="card" onclick="abrirModalFunconalidad('simulacao')">
+                <h3>🧪 Simulações Clínicas</h3>
+                <p>Ambiente prático controlado para testes de procedimentos essenciais.</p>
+            </div>
+
+            <div class="card" onclick="abrirModalFunconalidad('relatorio')">
+                <h3>📊 Relatórios Inteligentes</h3>
+                <p>Métricas precisas geradas logo após suas respostas e simulações.</p>
+            </div>
+
+            <div class="card" onclick="abrirModalFunconalidad('assistente')">
+                <h3>🤖 Assistente Virtual</h3>
+                <p>Esclareça dúvidas conceituais diretamente com nosso assistente automatizado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="prototipos">
+        <div class="section-title">
+            <h2>Protótipo Sugerido pelos Alunos</h2>
+            <p>Soluções visuais e práticas criadas para conferir máxima exatidão na área clínica.</p>
+        </div>
+
+        <div class="prototipo-container">
+            <div class="galeria-fotos">
+                <div class="foto-box">
+                    <p>1. Dimensões do protótipo.</p>
+                    <img src="https://i.im.ge/QMUDvMC/_953D08BB-3C0F-4426-9F4D-77C57943C908_.png" alt="Modelagem e Conceito Digital">
+                </div>
+                <div class="foto-box">
+                    <p>2. Como utilizar o protótipo. </p>
+                    <img src="https://i.im.ge/QMUyvmz/_BDE16808-568E-4133-AB06-3BA93DF3B4CB_.png" alt="Aplicação Hospitalar Projeto Vita">
+                </div>
+            </div>
+
+            <div class="prototipo-info">
+                <h3>Guia Orientador de Angulação</h3>
+                <p>Dispositivo desenvolvido de forma milimétrica para auxiliar aplicações e procedimentos clínicos que exijam uma inclinação padrão exata de 45°.</p>
+                <p>O equipamento previne erros humanos de posição de agulha e cateteres, ajudando profissionais de enfermagem e medicina a fixarem a memória muscular correta durante treinamentos repetitivos.</p>
+                <div class="lista">
+                    <div class="item">Ângulo 45° Perfeito</div>
+                    <div class="item">Alta Precision</div>
+                    <div class="item">Tecnologia Inteligente</div>
+                    <div class="item">Leve e Ergonômico</div>
+                    <div class="item">Base Estabilizadora</div>
+                    <div class="item">Prática Simulada</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="dashboard">
+        <div class="section-title">
+            <h2>Dashboard de Desempenho</h2>
+            <p>Acompanhe seu rendimento e progresso de estudos.</p>
+        </div>
+        <div class="dashboard">
+            <h3>Progresso Geral do Curso</h3>
+            <div class="progress">
+                <div class="bar"></div>
+            </div>
+            <p>87% concluído</p>
+            <div class="stats">
+                <div class="stat">
+                    <h2>+500</h2>
+                    <p>Alunos Treinados</p>
+                </div>
+                <div class="stat">
+                    <h2>98%</h2>
+                    <p>Taxa de Aprovação</p>
+                </div>
+                <div class="stat">
+                    <h2>120</h2>
+                    <p>Simulações Ativas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-contato" id="contato">
+        <h2>Projeto Vita</h2>
+        <p style="margin-bottom: 20px;">Tecnologia aplicada à saúde, engenharia clínica e aperfeiçoamento prático.</p>
+        
+        <h3>Desenvolvido por:</h3>
+        <div class="contato-links">
+            <a href="https://github.com/andrebarros-hue" target="_blank" class="link-social">📁 GitHub</a>
+            <a href="https://www.linkedin.com/in/andr%C3%A9-barros-aa33a8382/" target="_blank" class="link-social">💼 LinkedIn</a>
+        </div>
+        
+        <p>© 2026 Todos os direitos reservados.</p>
+    </section>
+
+    <div id="loginModal" class="modal-login">
+        <div class="login-box">
+            <button class="fechar-login" onclick="fecharLogin()">X</button>
+            <h3>Acesso Restrito</h3>
+            <p>Entre com suas credenciais do Projeto Vita.</p>
+            
+            <form onsubmit="realizarLogin(event)">
+                <div class="input-grupo">
+                    <label>E-mail institucional</label>
+                    <input type="email" placeholder="nome@hospital.com" required>
+                </div>
+                <div class="input-grupo">
+                    <label>Senha de acesso</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Autenticar no Sistema</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="quizPage" class="modal-fullscreen">
+        <div class="quiz-container">
+            <h2 style="color:#0b2d63; margin-bottom: 5px;">Questionário Clínico Geral</h2>
+            <p style="color:#5f7698; margin-bottom: 30px;">Responda às 10 perguntas rápidas para testar sua proficiência técnica.</p>
+
+            <div id="questoesGrupo"></div>
+
+            <div class="quiz-footer">
+                <button class="close-quiz" onclick="fecharQuiz()">Sair do Teste</button>
+                <button class="btn" id="proximoBtn" onclick="proximaQuestao()">Avançar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalRecursos" class="modal-funcao">
+        <div class="modal-funcao-corpo">
+            <button class="fechar-modal-funcao" onclick="fecharModalFunconalidad()">X</button>
+            <h3 id="modalTitulo" style="color:#0b2d63; margin-bottom:15px;">Título</h3>
+            <div id="modalConteudo" style="line-height:1.7;">Conteúdo</div>
+        </div>
+    </div>
+
+    <div class="chatbot">
+        <div class="chat-header">🤖 Assistente Virtual Vita</div>
+        <div class="chat-body" id="chatCorpo">
+            <div class="msg">Olá 👋<br>Fique à vontade para tirar dúvidas conceituais sobre o Guia de Angulação 45° ou sobre os procedimentos padrão!</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Pergunte sobre os 45°...">
+            <button class="btn" style="padding:10px 15px;" onclick="enviarMensagem()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const perguntas = [
+            { q: "Qual a angulação recomendada para uma injeção via Subcutânea em pacientes com tecido adiposo normal usando agulhas padrão?", o: ["15°", "45°", "90°", "10°"], a: 1 },
+            { q: "Em qual ângulo deve ser inserida a agulha para a realização de uma punção Venosa periférica clássica?", o: ["90°", "45°", "15° a 30°", "0°"], a: 2 },
+            { q: "A via Intradérmica é majoritariamente utilizada para quais tipos de procedimentos?", o: ["Grandes volumes de hidratação", "Testes alérgicos e vacina BCG", "Injeção de insulina lenta", "Nutrição parenteral total"], a: 1 },
+            { q: "Qual é o principal objetivo da utilização do Guia de Angulação Fixo de 45° no treinamento?", o: ["Acelerar o tempo de aplicação", "Garantir a precisão do plano tecidual visado", "Substituir a antissepsia", "Reduzir o custo dos insumos"], a: 1 },
+            { q: "O ângulo de 90° é estritamente mandatório para qual via de administração tecidual?", o: ["Intramuscular", "Intradérmica", "Subcutânea fina", "Endovenosa"], a: 0 },
+            { q: "Na higienização simples das mãos, o tempo mínimo recomendado de fricção deve ser de:", o: ["5 a 10 segundos", "20 a 30 segundos", "40 a 60 segundos", "5 minutos"], a: 2 },
+            { q: "O termo técnico 'Dispneia' refere-se a qual alteração clínica do paciente?", o: ["Batimento cardíaco acelerado", "Dificuldade ou desconforto para respirar", "Queda abrupta de pressão", "Ausência de urina"], a: 1 },
+            { q: "Qual o quadrante ideal selecionado para aplicações via Intramuscular na região glútea (Dorsoglúteo)?", o: ["Quadrante Superior Externo", "Quadrante Inferior Interno", "Quadrante Superior Interno", "Região Peri-umbilical"], a: 0 },
+            { q: "O uso de Equipamentos de Proteção Individual (EPIs) na saúde visa primariamente:", o: ["Proteger o profissional e o paciente de contaminações cruzadas", "Substituir a lavagem de mãos", "Isolar totalmente o ambiente hospitalar", "Cumprir apenas protocolo burocrático"], a: 0 },
+            { q: "Ao constatar um erro de medicação em andamento, qual a primeira conduta imediata do profissional?", o: ["Esconder o prontuário", "Suspender a infusão e comunicar o médico/supervisão", "Esperar o próximo plantão", "Aplicar o antídoto sem aviso"], a: 1 }
+        ];
+
+        let questaoAtual = 0;
+        let acertos = 0;
+        let selecionadaDoMomento = null;
+
+        // FUNÇÕES DE LOGIN (ENTRAR)
+        function abrirLogin() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function fecharLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function realizarLogin(event) {
+            event.preventDefault();
+            alert("Login simulado com sucesso! Redirecionando para o ambiente restrito do Projeto Vita.");
+            fecharLogin();
+        }
+
+        // SISTEMA DO QUIZ
+        function renderizarQuiz() {
+            const container = document.getElementById('questoesGrupo');
+            container.innerHTML = '';
+            perguntas.forEach((item, index) => {
+                let div = document.createElement('div');
+                div.className = `questao ${index === 0 ? 'ativa' : ''}`;
+                div.id = `q-${index}`;
+
+                let opcoesHtml = item.o.map((opcao, i) => 
+                    `<li><button class="opcao-btn" onclick="selecionarOpcao(${index}, ${i}, this)">${opcao}</button></li>`
+                ).join('');
+
+                div.innerHTML = `<h3>${index + 1}. ${item.q}</h3><ul class="opcoes-lista">${opcoesHtml}</ul>`;
+                container.appendChild(div);
+            });
+        }
+
+        function abrirQuiz() {
+            questaoAtual = 0;
+            acertos = 0;
+            selecionadaDoMomento = null;
+            renderizarQuiz();
+            document.getElementById('proximoBtn').style.display = 'block';
+            document.getElementById('proximoBtn').innerText = "Avançar";
+            document.getElementById('quizPage').style.display = 'block';
+        }
+
+        function fecharQuiz() {
+            document.getElementById('quizPage').style.display = 'none';
+        }
+
+        function selecionarOpcao(qIdx, oIdx, elemento) {
+            const botoes = elemento.closest('.opcoes-lista').querySelectorAll('.opcao-btn');
+            botoes.forEach(b => b.classList.remove('selecionada'));
+            elemento.classList.add('selecionada');
+            selecionadaDoMomento = oIdx;
+        }
+
+        function proximaQuestao() {
+            if (selecionadaDoMomento === null) {
+                alert("Por favor, selecione uma alternativa para prosseguir!");
+                return;
+            }
+
+            if (selecionadaDoMomento === perguntas[questaoAtual].a) {
+                acertos++;
+            }
+
+            document.getElementById(`q-${questaoAtual}`).classList.remove('ativa');
+            questaoAtual++;
+            selecionadaDoMomento = null;
+
+            if (questaoAtual < perguntas.length) {
+                document.getElementById(`q-${questaoAtual}`).classList.add('ativa');
+                if (questaoAtual === perguntas.length - 1) {
+                    document.getElementById('proximoBtn').innerText = "Finalizar Teste";
+                }
+            } else {
+                const porcentagem = (acertos / perguntas.length) * 100;
+                const container = document.getElementById('questoesGrupo');
+                container.innerHTML = `
+                    <div style="text-align:center; padding: 20px;">
+                        <h2 style="font-size:48px; color:#06d6a0;">${porcentagem}%</h2>
+                        <p style="font-size:20px; font-weight:600; margin:15px 0;">Você acertou ${acertos} de ${perguntas.length} questões!</p>
+                        <p style="color:#5f7698;">Seu aproveitamento foi registrado no sistema interno do Projeto Vita para validação de competências conceituais.</p>
+                    </div>
+                `;
+                document.getElementById('proximoBtn').style.display = 'none';
+            }
+        }
+
+        // CARDS INTERATIVOS
+        function abrirModalFunconalidad(tipo) {
+            const modal = document.getElementById('modalRecursos');
+            const titulo = document.getElementById('modalTitulo');
+            const conteudo = document.getElementById('modalConteudo');
+
+            if(tipo === 'treinamento') {
+                titulo.innerText = "🎓 Painel de Treinamento Virtual";
+                conteudo.innerHTML = "<p>Bem-vindo ao módulo acadêmico. Aqui você encontra vídeo-aulas integradas com análise de vetor anatômico.</p><br><button class='btn' onclick='fecharModalFunconalidad(); abrirQuiz();'>Iniciar Módulo Teórico</button>";
+            } else if(tipo === 'simulacao') {
+                titulo.innerText = "🧪 Central de Simulação Avançada";
+                conteudo.innerHTML = "<p>Simulador conectado via internet ao ecossistema digital. O software aguarda a calibração do seu guia eletrônico na base de testes para iniciar a contagem de acertos estruturais de angulação.</p>";
+            } else if(tipo === 'relatorio') {
+                titulo.innerText = "📊 Métricas e Relatórios";
+                conteudo.innerHTML = "<p>Seu índice de acerto atual em simulações guiadas é de <strong>87%</strong>. Erros sistemáticos detectados: inclinação excessiva para 50° em movimentos rápidos. Sugere-se apoio firme no guia plástico.</p>";
+            } else if(tipo === 'assistente') {
+                titulo.innerText = "🤖 Central do Assistente Cognitivo";
+                conteudo.innerHTML = "<p>Utilize a barra flutuante no canto inferior direito para conversar em tempo real com nossa inteligência artificial médica especializada em guias e agulhamentos.</p>";
+            }
+            modal.style.display = 'flex';
+        }
+
+        function fecharModalFunconalidad() {
+            document.getElementById('modalRecursos').style.display = 'none';
+        }
+
+        // ASSISTENTE VIRTUAL (CHATBOT)
+        function enviarMensagem() {
+            const input = document.getElementById('chatInput');
+            const texto = input.value.trim();
+            if(!texto) return;
+
+            const corpo = document.getElementById('chatCorpo');
+
+            let msgUser = document.createElement('div');
+            msgUser.className = 'msg';
+            msgUser.style.background = '#e2e8f0';
+            msgUser.style.textAlign = 'right';
+            msgUser.innerText = texto;
+            corpo.appendChild(msgUser);
+
+            input.value = '';
+
+            setTimeout(() => {
+                let msgBot = document.createElement('div');
+                msgBot.className = 'msg';
+                if(texto.toLowerCase().includes('45') || texto.toLowerCase().includes('ângulo') || texto.toLowerCase().includes('guia')) {
+                    msgBot.innerText = "O Guia de 45° do Projeto Vita serve exatamente para estabilizar injeções subcutâneas profundas e acessos específicos, minimizando o tremor humano.";
+                } else {
+                    msgBot.innerText = "Entendi! Esse tópico é abordado com detalhes práticos no nosso teste rápido. Que tal iniciar o questionário clicando no botão do menu superior?";
+                }
+                corpo.appendChild(msgBot);
+                corpo.scrollTop = corpo.scrollHeight;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
