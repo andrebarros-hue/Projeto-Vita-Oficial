@@ -132,6 +132,115 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
+        .assistant-section {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+            border-left: 6px solid #14b8ff;
+        }
+
+        .assistant-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .assistant-header h3 {
+            font-size: 24px;
+            color: #0b2d63;
+            font-weight: 700;
+        }
+
+        .chat-container {
+            background: #f4f8ff;
+            border-radius: 18px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .msg-box {
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 80%;
+            word-wrap: break-word;
+            animation: surgir 0.3s ease-out;
+        }
+
+        @keyframes surgir {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg-box.bot {
+            background: #dcefff;
+            color: #0b2d63;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .msg-box.user {
+            background: #06d6a0;
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .chat-controls input {
+            flex: 1;
+            padding: 16px;
+            border-radius: 14px;
+            border: 2px solid #e2e8f0;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .chat-controls input:focus {
+            border-color: #14b8ff;
+        }
+
+        .suggested-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag-btn {
+            background: #eaf2ff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2563eb;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tag-btn:hover {
+            background: #14b8ff;
+            color: white;
+            border-color: #14b8ff;
+        }
+
         .section {
             padding: 100px 70px;
         }
@@ -154,7 +263,7 @@
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
@@ -202,39 +311,219 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
         }
 
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .dashboard-header h3 {
+            font-size: 22px;
+            color: #0b2d63;
+            font-weight: 700;
+        }
+
+        .dashboard-filters {
+            display: flex;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 12px;
+            gap: 5px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #fff;
+            color: #0b2d63;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .progress-container {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 15px;
+            color: #0b2d63;
+            margin-bottom: 10px;
+        }
+
         .progress {
             width: 100%;
-            height: 22px;
-            background: #e8eef9;
+            height: 16px;
+            background: #e2e8f0;
             border-radius: 30px;
             overflow: hidden;
-            margin: 20px 0;
         }
 
         .bar {
             height: 100%;
             width: 87%;
             background: linear-gradient(90deg, #14b8ff, #06d6a0);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .stats {
-            margin-top: 40px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            gap: 20px;
+            margin-bottom: 35px;
         }
 
         .stat {
-            background: #f4f8ff;
-            padding: 30px;
+            background: #f8fafc;
+            padding: 25px;
             border-radius: 20px;
             text-align: center;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            border-color: #14b8ff;
+            background: #fff;
+            box-shadow: 0 12px 25px rgba(20, 184, 255, 0.1);
         }
 
         .stat h2 {
-            font-size: 42px;
+            font-size: 38px;
             color: #14b8ff;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .table-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f8fafc;
+            padding: 15px 25px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #475569;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #06d6a0;
+            text-transform: none;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #06d6a0;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 16px 25px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        th {
+            background: #fafafa;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .badge.success {
+            background: #ecfdf5;
+            color: #06d6a0;
+        }
+
+        .badge.warning {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+
+        .mini-progress {
+            width: 100px;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+
+        .mini-bar {
+            height: 100%;
+            background: #06d6a0;
+            transition: width 0.5s ease-in-out;
         }
 
         .prototipo-container {
@@ -304,7 +593,6 @@
             text-align: center;
         }
 
-        /* SEÇÃO DE CONTATO ATUALIZADA */
         .footer-contato {
             background: #06122d;
             color: #fff;
@@ -345,56 +633,7 @@
             margin-top: 20px;
         }
 
-        .chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 320px;
-            background: #fff;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
-            z-index: 9999;
-        }
-
-        .chat-header {
-            background: linear-gradient(90deg, #14b8ff, #2563eb);
-            color: #fff;
-            padding: 16px;
-            font-weight: 700;
-        }
-
-        .chat-body {
-            padding: 16px;
-            height: 260px;
-            overflow-y: auto;
-            background: #f4f8ff;
-        }
-
-        .msg {
-            background: #dcefff;
-            padding: 12px 14px;
-            border-radius: 14px;
-            margin-bottom: 12px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .chat-footer {
-            display: flex;
-            gap: 10px;
-            padding: 12px;
-        }
-
-        .chat-footer input {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            outline: none;
-        }
-
-        /* MODAL FULLSCREEN DO QUIZ */
+        /* --- MODAL DO QUIZ TOTALMENTE REFORMULADO (COM MATERIAL DE ESTUDO) --- */
         .modal-fullscreen {
             position: fixed;
             top: 0;
@@ -408,13 +647,61 @@
             padding: 40px 20px;
         }
 
+        .quiz-wrapper {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+        }
+
+        .study-base-container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 6px solid #06d6a0;
+            height: fit-content;
+        }
+
+        .study-base-container h3 {
+            color: #0b2d63;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .study-base-container p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
         .quiz-container {
-            max-width: 700px;
-            margin: 40px auto;
             background: white;
             padding: 40px;
             border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #14b8ff;
+        }
+
+        .quiz-header {
+            border-bottom: 2px solid #f4f8ff;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-header h2 {
+            color: #0b2d63;
+            font-size: 24px;
+        }
+
+        .quiz-header span {
+            font-weight: 700;
+            color: #14b8ff;
         }
 
         .questao {
@@ -429,7 +716,8 @@
         .questao h3 {
             margin-bottom: 20px;
             color: #0b2d63;
-            font-size: 20px;
+            font-size: 19px;
+            line-height: 1.5;
         }
 
         .opcoes-lista {
@@ -447,7 +735,7 @@
             border-radius: 12px;
             background: white;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             transition: 0.2s;
         }
 
@@ -470,15 +758,19 @@
         }
 
         .close-quiz {
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: #e2e8f0;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
+            transition: 0.2s;
+        }
+        .close-quiz:hover {
+            background: #cbd5e1;
         }
 
-        /* MODAL DE LOGIN (TELA ENTRAR) */
+        /* Modais padrão de Login e Recursos */
         .modal-login {
             position: fixed;
             top: 0;
@@ -555,7 +847,6 @@
             cursor: pointer;
         }
 
-        /* Modal Genérico para as Funções */
         .modal-funcao {
             position: fixed;
             top: 0;
@@ -565,20 +856,21 @@
             background: rgba(4, 15, 35, 0.6);
             backdrop-filter: blur(8px);
             z-index: 10000;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
-            display: none;
         }
 
         .modal-funcao-corpo {
             background: white;
             padding: 40px;
             border-radius: 24px;
-            max-width: 600px;
+            max-width: 650px;
             width: 90%;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
             position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
         .fechar-modal-funcao {
@@ -595,8 +887,8 @@
             font-size: 18px;
         }
 
-        @media(max-width:900px){
-            .hero, .prototipo-container {
+        @media(max-width:950px){
+            .hero, .prototipo-container, .quiz-wrapper {
                 grid-template-columns: 1fr;
             }
             .hero {
@@ -617,12 +909,16 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .chatbot {
-                width: 95%;
-                right: 10px;
-            }
             .lista {
                 grid-template-columns: 1fr;
+            }
+            .assistant-section {
+                padding: 20px;
+                margin: 20px 10px 0 10px;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -633,10 +929,10 @@
         <div class="logo">💉 Projeto Vita</div>
         <nav>
             <a href="#inicio">Início</a>
+            <a href="#assistente">Assistente</a>
             <a href="#recursos">Recursos</a>
             <a href="#prototipos">Soluções</a>
             <a href="#dashboard">Dashboard</a>
-            <a href="#contato">Contato</a>
             <button class="btn" onclick="abrirLogin()">Entrar</button>
         </nav>
     </header>
@@ -655,6 +951,28 @@
         </div>
     </section>
 
+    <section class="assistant-section" id="assistente">
+        <div class="assistant-header">
+            <span style="font-size: 28px;">🤖</span>
+            <h3>Central do Assistente Cognitivo Vita</h3>
+        </div>
+        <div class="chat-container" id="chatCorpo">
+            <div class="msg-box bot">
+                Olá! Sou a Inteligência Artificial do Projeto Vita. Estou aqui para esclarecer suas dúvidas técnicas sobre o Guia de Angulação de 45°, anatomia tecidual, biossegurança ou processos de engenharia clínica e manufatura 3D. Como posso ajudar?
+            </div>
+        </div>
+        <div class="chat-controls">
+            <input type="text" id="chatInput" placeholder="Ex: Qual a importância do ângulo de 45 graus na área clínica?" onkeydown="if(event.key === 'Enter') enviarMensagem()">
+            <button class="btn" onclick="enviarMensagem()">Enviar</button>
+        </div>
+        <div class="suggested-tags">
+            <button class="tag-btn" onclick="perguntarTag('Qual a vantagem clínica do ângulo de 45°?')">📐 Vantagem dos 45°</button>
+            <button class="tag-btn" onclick="perguntarTag('Quais materiais foram usados no protótipo?')">🔬 Materiais e Engenharia</button>
+            <button class="tag-btn" onclick="perguntarTag('Como a simulação fixa a memória muscular?')">🧠 Memória Muscular</button>
+            <button class="tag-btn" onclick="perguntarTag('Qual o papel da biossegurança e EPIs?')">🛡️ Biossegurança e Higiene</button>
+        </div>
+    </section>
+
     <section class="section" id="recursos">
         <div class="section-title">
             <h2>Recursos Inteligentes</h2>
@@ -664,7 +982,7 @@
         <div class="cards">
             <div class="card" onclick="abrirModalFunconalidad('treinamento')">
                 <h3>🎓 Treinamento Virtual</h3>
-                <p>Aulas dinâmicas e teóricas com suporte multimídia avançado.</p>
+                <p>Aulas dinâmicas e teóricas com suporte multimídia avançado e focado.</p>
             </div>
 
             <div class="card" onclick="abrirModalFunconalidad('simulacao')">
@@ -672,14 +990,14 @@
                 <p>Ambiente prático controlado para testes de procedimentos essenciais.</p>
             </div>
 
-            <div class="card" onclick="abrirModalFunconalidad('relatorio')">
-                <h3>📊 Relatórios Inteligentes</h3>
-                <p>Métricas precisas geradas logo após suas respostas e simulações.</p>
+            <div class="card" onclick="abrirModalFunconalidad('estudo')">
+                <h3>📖 Estudo Sugerido</h3>
+                <p>Roteiros personalizados e referências científicas completas para você se aprofundar.</p>
             </div>
 
-            <div class="card" onclick="abrirModalFunconalidad('assistente')">
-                <h3>🤖 Assistente Virtual</h3>
-                <p>Esclareça dúvidas conceituais diretamente com nosso assistente automatizado.</p>
+            <div class="card" onclick="abrirModalFunconalidad('detalhes')">
+                <h3>📐 Detalhes do Protótipo</h3>
+                <p>Veja as angulações, engenharia mecânica 3D e pesquisas técnicas desenvolvidas pelos alunos.</p>
             </div>
         </div>
     </section>
@@ -721,257 +1039,436 @@
     <section class="section" id="dashboard">
         <div class="section-title">
             <h2>Dashboard de Desempenho</h2>
-            <p>Acompanhe seu rendimento e progresso de estudos.</p>
+            <p>Monitore suas atividades, status de aprovação e métricas conectadas diretamente ao seu teste clínico.</p>
         </div>
+        
         <div class="dashboard">
-            <h3>Progresso Geral do Curso</h3>
-            <div class="progress">
-                <div class="bar"></div>
+            <div class="dashboard-header">
+                <h3>Métricas de Aproveitamento</h3>
+                <div class="dashboard-filters">
+                    <button class="filter-btn active" id="flt-todos" onclick="filtrarStatus('todos')">Todos</button>
+                    <button class="filter-btn" id="flt-concluido" onclick="filtrarStatus('Concluído')">Concluídos</button>
+                    <button class="filter-btn" id="flt-andamento" onclick="filtrarStatus('Em Andamento')">Em Andamento</button>
+                </div>
             </div>
-            <p>87% concluído</p>
+
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>Progresso Geral do Curso</span>
+                    <span id="txt-progresso">87% concluído</span>
+                </div>
+                <div class="progress">
+                    <div class="bar" id="barra-progresso" style="width: 87%"></div>
+                </div>
+            </div>
+
             <div class="stats">
-                <div class="stat">
+                <div class="stat" onclick="filtrarStatus('todos')">
                     <h2>+500</h2>
                     <p>Alunos Treinados</p>
                 </div>
-                <div class="stat">
+                <div class="stat" onclick="filtrarStatus('Concluído')">
                     <h2>98%</h2>
                     <p>Taxa de Aprovação</p>
                 </div>
-                <div class="stat">
-                    <h2>120</h2>
+                <div class="stat" onclick="filtrarStatus('Em Andamento')">
+                    <h2 id="num-ativos">120</h2>
                     <p>Simulações Ativas</p>
                 </div>
             </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <span>Monitoramento de Testes Clínicos</span>
+                    <div class="live-indicator">
+                        <div class="pulse-dot"></div>
+                        Tempo Real
+                    </div>
+                </div>
+                <table id="tabela-simulacoes">
+                    <thead>
+                        <tr>
+                            <th>ID do Teste</th>
+                            <th>Módulo de Simulação</th>
+                            <th>Rendimento Atual</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-status="Concluído">
+                            <td style="font-family: monospace; font-weight: 700; color:#14b8ff;">#SIM-0120</td>
+                            <td style="font-weight: 600;">Atendimento de Emergência Cardiológica</td>
+                            <td>
+                                <span style="font-weight: 700;">92%</span>
+                                <div class="mini-progress"><div class="mini-bar" style="width: 92%"></div></div>
+                            </td>
+                            <td><span class="badge success">Concluído</span></td>
+                        </tr>
+                        <tr data-status="Em Andamento" id="linha-teste-usuario">
+                            <td style="font-family: monospace; font-weight: 700; color:#14b8ff;">#SIM-0121</td>
+                            <td style="font-weight: 600;" id="nome-teste-usuario">Questionário Clínico Geral (Seu Teste)</td>
+                            <td>
+                                <span style="font-weight: 700;" id="rendimento-usuario">--</span>
+                                <div class="mini-progress"><div class="mini-bar" id="barra-usuario" style="width: 0%"></div></div>
+                            </td>
+                            <td><span class="badge warning" id="badge-usuario">Em Andamento</span></td>
+                        </tr>
+                        <tr data-status="Concluído">
+                            <td style="font-family: monospace; font-weight: 700; color:#14b8ff;">#SIM-0122</td>
+                            <td style="font-weight: 600;">Protocolo de Biossegurança Hospitalar</td>
+                            <td>
+                                <span style="font-weight: 700;">95%</span>
+                                <div class="mini-progress"><div class="mini-bar" style="width: 95%"></div></div>
+                            </td>
+                            <td><span class="badge success">Concluído</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
-    <section class="footer-contato" id="contato">
+    <footer class="footer-contato" id="contato">
         <h2>Projeto Vita</h2>
-        <p style="margin-bottom: 20px;">Tecnologia aplicada à saúde, engenharia clínica e aperfeiçoamento prático.</p>
-        
-        <h3>Desenvolvido por:</h3>
-        <div class="contato-links">
-            <a href="https://github.com/andrebarros-hue" target="_blank" class="link-social">📁 GitHub</a>
-            <a href="https://www.linkedin.com/in/andr%C3%A9-barros-aa33a8382/" target="_blank" class="link-social">💼 LinkedIn</a>
-        </div>
-        
-        <p>© 2026 Todos os direitos reservados.</p>
-    </section>
+        <p>© 2026 Projeto Vita - Sistema de Treinamento e Engenharia Clínica Hospitalar.</p>
+    </footer>
 
-    <div id="loginModal" class="modal-login">
-        <div class="login-box">
-            <button class="fechar-login" onclick="fecharLogin()">X</button>
-            <h3>Acesso Restrito</h3>
-            <p>Entre com suas credenciais do Projeto Vita.</p>
-            
-            <form onsubmit="realizarLogin(event)">
-                <div class="input-grupo">
-                    <label>E-mail institucional</label>
-                    <input type="email" placeholder="nome@hospital.com" required>
+    <div class="modal-fullscreen" id="modalQuiz">
+        <div class="quiz-wrapper">
+            <div class="study-base-container">
+                <h3>📚 Guia Rápido de Estudos</h3>
+                <p>Use este resumo como base para responder o questionário com precisão.</p>
+                <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 15px 0;">
+                <p><strong>1. Angulação Clínica:</strong> O ângulo de 45° é amplamente utilizado em injeções subcutâneas e acessos vasculares periféricos profundos em determinados biotipos. Matematicamente, a projeção da agulha equilibra perfeitamente a profundidade em relação ao tecido adiposo.</p>
+                <p><strong>2. Memória Muscular:</strong> A repetição guiada por um dispositivo físico impede desvios indesejados nas três coordenadas espaciais, condicionando o cérebro e o braço do operador a reproduzir o movimento idêntico sem fadiga e sem sobressaltos conceituais.</p>
+                <p><strong>3. Engenharia 3D & Biossegurança:</strong> Protótipos construídos via impressão FDM (como PLA ou PETG) exigem higienização química controlada. O uso de EPIs como luvas de nitrilo, máscara cirúrgica e óculos de proteção previne infecções cruzadas e acidentes com perfurocortantes.</p>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2>Questionário Vita</h2>
+                    <div>Questão <span id="idx-questao">1</span> de 10</div>
                 </div>
-                <div class="input-grupo">
-                    <label>Senha de acesso</label>
-                    <input type="password" placeholder="••••••••" required>
+
+                <div id="questoesGrupo">
+                    <div class="questao ativa" data-correta="A">
+                        <h3>1. Qual a principal finalidade clínica do Guia de Angulação de 45°?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Padronizar a inclinação de agulhas e cateteres para reduzir erros práticos.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Acelerar a velocidade da aplicação do medicamento.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Medir a pressão arterial automática do paciente.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="C">
+                        <h3>2. Na trigonometria do protótipo, o ângulo de $45° gera componentes horizontais e verticais de qual proporção?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Proporção totalmente assimétrica (10% e 90%).</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Apenas componente vertical pura.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Componentes iguais, pois (45°) = (45°).</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="B">
+                        <h3>3. Por que o treinamento prático repetitivo com o guia auxilia o profissional?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Dispensa completamente a necessidade de higienizar as mãos.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Ajuda a fixar a memória muscular ideal para procedimentos futuros.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Serve apenas para decoração do laboratório clínico.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="A">
+                        <h3>4. Qual destes materiais é comumente empregado na manufatura aditiva 3D de protótipos ergonômicos médicos?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) PLA ou filamentos poliméricos biocompatíveis esterilizáveis.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Chumbo e ligas de ferro fundido denso.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Vidro comum temperado industrial.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="C">
+                        <h3>5. Qual item de proteção individual (EPI) é obrigatório durante o manuseio de agulhas com o protótipo?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Avental de raspa de couro pesado.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Protetor auricular do tipo concha.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Luvas de procedimento clínico e óculos de proteção.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="A">
+                        <h3>6. O descarte de materiais perfurocortantes utilizados nas simulações deve ocorrer em qual recipiente?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Caixa de descarte rígida amarela específica (Descarpack).</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Lixeira comum de resíduos recicláveis secos.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Sacolas plásticas finas de uso comercial.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="B">
+                        <h3>7. O que a base estabilizadora do protótipo Vita previne na hora do treinamento?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Previne o vazamento de energia elétrica do ambiente.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Previne oscilações e tremores laterais da agulha durante a inserção.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Previne o superaquecimento térmico do cateter.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="A">
+                        <h3>8. O tecido em que a agulha penetra na inclinação de $45° na via subcutânea situa-se logo abaixo de qual camada?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Da derme e epiderme.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Do tecido ósseo cortical.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Do tecido muscular estriado profundo apenas.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="C">
+                        <h3>9. Por que a engenharia clínica valida protótipos funcionais com estudantes?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Para encarecer os custos das indústrias farmacêuticas.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Para eliminar completamente a teoria das faculdades.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Para coletar feedback real e calibrar a ergonomia do design.</button>
+                        </div>
+                    </div>
+                    <div class="questao" data-correta="B">
+                        <h3>10. Biossegurança abrange quais tipos de ações preventivas nas simulações?</h3>
+                        <div class="opcoes-lista">
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'A')">A) Apenas controle estético do visual do laboratório.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'B')">B) Medidas para diminuir os riscos biológicos e contaminações.</button>
+                            <button class="opcao-btn" onclick="selecionarOpcao(this, 'C')">C) Gerenciamento do sinal Wi-Fi do hospital.</button>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Autenticar no Sistema</button>
-            </form>
-        </div>
-    </div>
 
-    <div id="quizPage" class="modal-fullscreen">
-        <div class="quiz-container">
-            <h2 style="color:#0b2d63; margin-bottom: 5px;">Questionário Clínico Geral</h2>
-            <p style="color:#5f7698; margin-bottom: 30px;">Responda às 10 perguntas rápidas para testar sua proficiência técnica.</p>
-
-            <div id="questoesGrupo"></div>
-
-            <div class="quiz-footer">
-                <button class="close-quiz" onclick="fecharQuiz()">Sair do Teste</button>
-                <button class="btn" id="proximoBtn" onclick="proximaQuestao()">Avançar</button>
+                <div class="quiz-footer">
+                    <button class="close-quiz" onclick="fecharQuiz()">Sair do Teste</button>
+                    <button class="btn" id="proximaQuestaoBtn" onclick="avancarQuestao()">Avançar Questão</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="modalRecursos" class="modal-funcao">
-        <div class="modal-funcao-corpo">
-            <button class="fechar-modal-funcao" onclick="fecharModalFunconalidad()">X</button>
-            <h3 id="modalTitulo" style="color:#0b2d63; margin-bottom:15px;">Título</h3>
-            <div id="modalConteudo" style="line-height:1.7;">Conteúdo</div>
+    <div class="modal-login" id="modalLogin">
+        <div class="login-box">
+            <button class="fechar-login" onclick="fecharLogin()">X</button>
+            <h3>Área do Profissional</h3>
+            <p>Faça login para salvar seu histórico de treinos.</p>
+            <div class="input-grupo">
+                <label>E-mail Clínico</label>
+                <input type="email" placeholder="nome@hospital.com">
+            </div>
+            <div class="input-grupo">
+                <label>Senha</label>
+                <input type="password" placeholder="••••••••">
+            </div>
+            <button class="btn" style="width: 100%;" onclick="fecharLogin()">Entrar no Sistema</button>
         </div>
     </div>
 
-    <div class="chatbot">
-        <div class="chat-header">🤖 Assistente Virtual Vita</div>
-        <div class="chat-body" id="chatCorpo">
-            <div class="msg">Olá 👋<br>Fique à vontade para tirar dúvidas conceituais sobre o Guia de Angulação 45° ou sobre os procedimentos padrão!</div>
-        </div>
-        <div class="chat-footer">
-            <input type="text" id="chatInput" placeholder="Pergunte sobre os 45°...">
-            <button class="btn" style="padding:10px 15px;" onclick="enviarMensagem()">Enviar</button>
+    <div class="modal-funcao" id="modalFuncao">
+        <div class="modal-funcao-corpo">
+            <button class="fechar-modal-funcao" onclick="fecharModalFunconalidad()">X</button>
+            <div id="modalFuncaoConteudo">
+                </div>
         </div>
     </div>
 
     <script>
-        const perguntas = [
-            { q: "Qual a angulação recomendada para uma injeção via Subcutânea em pacientes com tecido adiposo normal usando agulhas padrão?", o: ["15°", "45°", "90°", "10°"], a: 1 },
-            { q: "Em qual ângulo deve ser inserida a agulha para a realização de uma punção Venosa periférica clássica?", o: ["90°", "45°", "15° a 30°", "0°"], a: 2 },
-            { q: "A via Intradérmica é majoritariamente utilizada para quais tipos de procedimentos?", o: ["Grandes volumes de hidratação", "Testes alérgicos e vacina BCG", "Injeção de insulina lenta", "Nutrição parenteral total"], a: 1 },
-            { q: "Qual é o principal objetivo da utilização do Guia de Angulação Fixo de 45° no treinamento?", o: ["Acelerar o tempo de aplicação", "Garantir a precisão do plano tecidual visado", "Substituir a antissepsia", "Reduzir o custo dos insumos"], a: 1 },
-            { q: "O ângulo de 90° é estritamente mandatório para qual via de administração tecidual?", o: ["Intramuscular", "Intradérmica", "Subcutânea fina", "Endovenosa"], a: 0 },
-            { q: "Na higienização simples das mãos, o tempo mínimo recomendado de fricção deve ser de:", o: ["5 a 10 segundos", "20 a 30 segundos", "40 a 60 segundos", "5 minutos"], a: 2 },
-            { q: "O termo técnico 'Dispneia' refere-se a qual alteração clínica do paciente?", o: ["Batimento cardíaco acelerado", "Dificuldade ou desconforto para respirar", "Queda abrupta de pressão", "Ausência de urina"], a: 1 },
-            { q: "Qual o quadrante ideal selecionado para aplicações via Intramuscular na região glútea (Dorsoglúteo)?", o: ["Quadrante Superior Externo", "Quadrante Inferior Interno", "Quadrante Superior Interno", "Região Peri-umbilical"], a: 0 },
-            { q: "O uso de Equipamentos de Proteção Individual (EPIs) na saúde visa primariamente:", o: ["Proteger o profissional e o paciente de contaminações cruzadas", "Substituir a lavagem de mãos", "Isolar totalmente o ambiente hospitalar", "Cumprir apenas protocolo burocrático"], a: 0 },
-            { q: "Ao constatar um erro de medicação em andamento, qual a primeira conduta imediata do profissional?", o: ["Esconder o prontuário", "Suspender a infusão e comunicar o médico/supervisão", "Esperar o próximo plantão", "Aplicar o antídoto sem aviso"], a: 1 }
-        ];
-
-        let questaoAtual = 0;
-        let acertos = 0;
-        let selecionadaDoMomento = null;
-
-        // FUNÇÕES DE LOGIN (ENTRAR)
-        function abrirLogin() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        function fecharLogin() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        function realizarLogin(event) {
-            event.preventDefault();
-            alert("Login simulado com sucesso! Redirecionando para o ambiente restrito do Projeto Vita.");
-            fecharLogin();
-        }
-
-        // SISTEMA DO QUIZ
-        function renderizarQuiz() {
-            const container = document.getElementById('questoesGrupo');
-            container.innerHTML = '';
-            perguntas.forEach((item, index) => {
-                let div = document.createElement('div');
-                div.className = `questao ${index === 0 ? 'ativa' : ''}`;
-                div.id = `q-${index}`;
-
-                let opcoesHtml = item.o.map((opcao, i) => 
-                    `<li><button class="opcao-btn" onclick="selecionarOpcao(${index}, ${i}, this)">${opcao}</button></li>`
-                ).join('');
-
-                div.innerHTML = `<h3>${index + 1}. ${item.q}</h3><ul class="opcoes-lista">${opcoesHtml}</ul>`;
-                container.appendChild(div);
-            });
-        }
-
-        function abrirQuiz() {
-            questaoAtual = 0;
-            acertos = 0;
-            selecionadaDoMomento = null;
-            renderizarQuiz();
-            document.getElementById('proximoBtn').style.display = 'block';
-            document.getElementById('proximoBtn').innerText = "Avançar";
-            document.getElementById('quizPage').style.display = 'block';
-        }
-
-        function fecharQuiz() {
-            document.getElementById('quizPage').style.display = 'none';
-        }
-
-        function selecionarOpcao(qIdx, oIdx, elemento) {
-            const botoes = elemento.closest('.opcoes-lista').querySelectorAll('.opcao-btn');
-            botoes.forEach(b => b.classList.remove('selecionada'));
-            elemento.classList.add('selecionada');
-            selecionadaDoMomento = oIdx;
-        }
-
-        function proximaQuestao() {
-            if (selecionadaDoMomento === null) {
-                alert("Por favor, selecione uma alternativa para prosseguir!");
-                return;
-            }
-
-            if (selecionadaDoMomento === perguntas[questaoAtual].a) {
-                acertos++;
-            }
-
-            document.getElementById(`q-${questaoAtual}`).classList.remove('ativa');
-            questaoAtual++;
-            selecionadaDoMomento = null;
-
-            if (questaoAtual < perguntas.length) {
-                document.getElementById(`q-${questaoAtual}`).classList.add('ativa');
-                if (questaoAtual === perguntas.length - 1) {
-                    document.getElementById('proximoBtn').innerText = "Finalizar Teste";
-                }
-            } else {
-                const porcentagem = (acertos / perguntas.length) * 100;
-                const container = document.getElementById('questoesGrupo');
-                container.innerHTML = `
-                    <div style="text-align:center; padding: 20px;">
-                        <h2 style="font-size:48px; color:#06d6a0;">${porcentagem}%</h2>
-                        <p style="font-size:20px; font-weight:600; margin:15px 0;">Você acertou ${acertos} de ${perguntas.length} questões!</p>
-                        <p style="color:#5f7698;">Seu aproveitamento foi registrado no sistema interno do Projeto Vita para validação de competências conceituais.</p>
-                    </div>
-                `;
-                document.getElementById('proximoBtn').style.display = 'none';
-            }
-        }
-
-        // CARDS INTERATIVOS
-        function abrirModalFunconalidad(tipo) {
-            const modal = document.getElementById('modalRecursos');
-            const titulo = document.getElementById('modalTitulo');
-            const conteudo = document.getElementById('modalConteudo');
-
-            if(tipo === 'treinamento') {
-                titulo.innerText = "🎓 Painel de Treinamento Virtual";
-                conteudo.innerHTML = "<p>Bem-vindo ao módulo acadêmico. Aqui você encontra vídeo-aulas integradas com análise de vetor anatômico.</p><br><button class='btn' onclick='fecharModalFunconalidad(); abrirQuiz();'>Iniciar Módulo Teórico</button>";
-            } else if(tipo === 'simulacao') {
-                titulo.innerText = "🧪 Central de Simulação Avançada";
-                conteudo.innerHTML = "<p>Simulador conectado via internet ao ecossistema digital. O software aguarda a calibração do seu guia eletrônico na base de testes para iniciar a contagem de acertos estruturais de angulação.</p>";
-            } else if(tipo === 'relatorio') {
-                titulo.innerText = "📊 Métricas e Relatórios";
-                conteudo.innerHTML = "<p>Seu índice de acerto atual em simulações guiadas é de <strong>87%</strong>. Erros sistemáticos detectados: inclinação excessiva para 50° em movimentos rápidos. Sugere-se apoio firme no guia plástico.</p>";
-            } else if(tipo === 'assistente') {
-                titulo.innerText = "🤖 Central do Assistente Cognitivo";
-                conteudo.innerHTML = "<p>Utilize a barra flutuante no canto inferior direito para conversar em tempo real com nossa inteligência artificial médica especializada em guias e agulhamentos.</p>";
-            }
-            modal.style.display = 'flex';
-        }
-
-        function fecharModalFunconalidad() {
-            document.getElementById('modalRecursos').style.display = 'none';
-        }
-
-        // ASSISTENTE VIRTUAL (CHATBOT)
+        // --- SISTEMA CORRIGIDO DA ASSISTENTE VIRTUAL (Mapeamento Exato de Perguntas) ---
         function enviarMensagem() {
             const input = document.getElementById('chatInput');
-            const texto = input.value.trim();
-            if(!texto) return;
+            const mensagem = input.value.trim();
+            if(!mensagem) return;
 
-            const corpo = document.getElementById('chatCorpo');
-
-            let msgUser = document.createElement('div');
-            msgUser.className = 'msg';
-            msgUser.style.background = '#e2e8f0';
-            msgUser.style.textAlign = 'right';
-            msgUser.innerText = texto;
-            corpo.appendChild(msgUser);
-
+            exibirMensagem(mensagem, 'user');
             input.value = '';
 
             setTimeout(() => {
-                let msgBot = document.createElement('div');
-                msgBot.className = 'msg';
-                if(texto.toLowerCase().includes('45') || texto.toLowerCase().includes('ângulo') || texto.toLowerCase().includes('guia')) {
-                    msgBot.innerText = "O Guia de 45° do Projeto Vita serve exatamente para estabilizar injeções subcutâneas profundas e acessos específicos, minimizando o tremor humano.";
-                } else {
-                    msgBot.innerText = "Entendi! Esse tópico é abordado com detalhes práticos no nosso teste rápido. Que tal iniciar o questionário clicando no botão do menu superior?";
+                let resposta = "Entendi sua dúvida! O Projeto Vita foca na precisão espacial dos movimentos cirúrgicos e na estabilização instrumental. Gostaria de focar na parte de angulações ou no material de manufatura do protótipo?";
+                const msgMinuscula = mensagem.toLowerCase();
+
+                if (msgMinuscula.includes('ângulo') || msgMinuscula.includes('45')) {
+                    resposta = "O ângulo de 45 graus possui um papel vital na aplicação de vias subcutâneas profundas e acessos vasculares. O guia estruturado mantém a trajetória linear estável, neutralizando a variação angular natural do pulso humano e mitigando traumas teciduais.";
+                } else if (msgMinuscula.includes('material') || msgMinuscula.includes('engenharia') || msgMinuscula.includes('3d')) {
+                    resposta = "O protótipo físico foi planejado em software CAD e impresso em modelagem por fusão de filamento (FDM) utilizando polímeros leves e resistentes. Possui uma base anatômica em formato curvo para acoplamento perfeito na derme do simulador.";
+                } else if (msgMinuscula.includes('memória') || msgMinuscula.includes('muscular') || msgMinuscula.includes('fixa')) {
+                    resposta = "A memória muscular se consolida por meio da repetição sistemática sob restrições físicas corretas. O guia mecânico atua como um gabarito tátil; após dezenas de ciclos com o dispositivo, a mão do profissional automatiza o posicionamento do ângulo correto.";
+                } else if (msgMinuscula.includes('biossegurança') || msgMinuscula.includes('epi') || msgMinuscula.includes('higiene')) {
+                    resposta = "A biossegurança no ecossistema Vita exige esterilização química fria nas superfícies do protótipo, higienização rigorosa das mãos e uso completo de EPIs de barreira (luvas de procedimento, máscara e óculos) para simular com fidelidade o cenário de atendimento real.";
                 }
-                corpo.appendChild(msgBot);
-                corpo.scrollTop = corpo.scrollHeight;
+
+                exibirMensagem(resposta, 'bot');
             }, 600);
         }
+
+        function perguntarTag(textoPergunta) {
+            document.getElementById('chatInput').value = textoPergunta;
+            enviarMensagem();
+        }
+
+        function exibirMensagem(texto, remetente) {
+            const chatCorpo = document.getElementById('chatCorpo');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `msg-box ${remetente}`;
+            msgDiv.innerText = texto;
+            chatCorpo.appendChild(msgDiv);
+            chatCorpo.scrollTop = chatCorpo.scrollHeight;
+        }
+
+        // --- SISTEMA DO MODAL DE RECURSOS E ABAS DIRECIONAIS ---
+        function abrirModalFunconalidad(tipo) {
+            const container = document.getElementById('modalFuncaoConteudo');
+            let html = "";
+
+            if (tipo === 'treinamento') {
+                html = `
+                    <h3 style="color:#0b2d63; margin-bottom:15px;">🎓 Treinamento Virtual</h3>
+                    <p style="line-height:1.7; margin-bottom:20px;">Você será redirecionado para o nosso módulo educacional teórico integrado.</p>
+                    <button class="btn" onclick="fecharModalFunconalidad(); window.location.href='#inicio';">Acessar Início do Treinamento</button>
+                `;
+            } else if (tipo === 'simulacao') {
+                html = `
+                    <h3 style="color:#0b2d63; margin-bottom:15px;">🧪 Módulo de Simulações Clínicas</h3>
+                    <p style="line-height:1.7; margin-bottom:20px;">Ambiente focado em testes práticos dinâmicos. Deseja iniciar o teste avaliativo rápido agora?</p>
+                    <button class="btn" onclick="fecharModalFunconalidad(); abrirQuiz();">Iniciar Quiz Prático</button>
+                `;
+            } else if (tipo === 'estudo') {
+                html = `
+                    <h3 style="color:#0b2d63; margin-bottom:15px;">📖 Nova Aba: Roteiro de Estudo Sugerido</h3>
+                    <p style="line-height:1.7; margin-bottom:15px;">Com base nas curvas de aprendizado mapeadas, organizamos o seguinte fluxo acadêmico:</p>
+                    <ul style="margin-left:20px; line-height:1.8; margin-bottom:20px;">
+                        <li><strong>Fase 1:</strong> Estudo da Anatomia da Pele (Epiderme, Derme e Camada Subcutânea).</li>
+                        <li><strong>Fase 2:</strong> Vetores Angulares em Injeções ($30°, $45° e $90°).</li>
+                        <li><strong>Fase 3:</strong> Princípios de Ergonomia Aplicada e Cinemática das Mãos.</li>
+                    </ul>
+                    <button class="btn" onclick="fecharModalFunconalidad(); abrirQuiz();">Estudar Conectado ao Quiz</button>
+                `;
+            } else if (tipo === 'detalhes') {
+                html = `
+                    <h3 style="color:#0b2d63; margin-bottom:15px;">📐 Nova Aba: Estudo de Engenharia do Protótipo</h3>
+                    <p style="line-height:1.6; margin-bottom:15px;"><strong>Análise de Angulações Desenvolvida pelos Alunos:</strong></p>
+                    <p style="font-size:14px; background:#f4f8ff; padding:15px; border-radius:10px; font-family:monospace; margin-bottom:15px; line-height:1.5;">
+                        Inclinação Fixa: $45^\°<br>
+                        Cálculo do Vetor de Inserção:<br>
+                        $V_z = V \cdot \sin(45°) \approx 0.707 \cdot V$<br>
+                        $V_x = V \cdot \cos(45°) \approx 0.707 \cdot V$
+                    </p>
+                    <p style="line-height:1.6; margin-bottom:20px;">Os dados experimentais dos alunos revelaram que a utilização do guia mecânico reduziu a taxa de erro de angulação de profissionais iniciantes de **18%** para menos de **2%** nas rodadas de simulações controladas.</p>
+                    <button class="btn" onclick="fecharModalFunconalidad(); window.location.href='#prototipos';">Ver Fotos do Protótipo</button>
+                `;
+            }
+
+            container.innerHTML = html;
+            document.getElementById('modalFuncao').style.display = 'flex';
+        }
+
+        function fecharModalFunconalidad() {
+            document.getElementById('modalFuncao').style.display = 'none';
+        }
+
+        // --- SISTEMA DO QUESTIONÁRIO REVISADO (EXATAMENTE 10 QUESTÕES SIMPLES) ---
+        let questaoAtualIdx = 0;
+        let respostasMarcadas = {};
+
+        function abrirQuiz() {
+            questaoAtualIdx = 0;
+            respostasMarcadas = {};
+            
+            const botoesOpcoes = document.querySelectorAll('.opcao-btn');
+            botoesOpcoes.forEach(b => b.classList.remove('selecionada'));
+
+            atualizarVisibilidadeQuestao();
+            document.getElementById('proximaQuestaoBtn').innerText = "Avançar Questão";
+            document.getElementById('modalQuiz').style.display = 'block';
+
+            // Reseta feedback no dashboard antes de rodar
+            document.getElementById('rendimento-usuario').innerText = "Em Andamento";
+            document.getElementById('barra-usuario').style.width = "30%";
+        }
+
+        function fecharQuiz() {
+            document.getElementById('modalQuiz').style.display = 'none';
+        }
+
+        function selecionarOpcao(botao, letra) {
+            const opcoesDaQuestao = botao.parentElement.querySelectorAll('.opcao-btn');
+            opcoesDaQuestao.forEach(b => b.classList.remove('selecionada'));
+            botao.classList.add('selecionada');
+            respostasMarcadas[questaoAtualIdx] = letra;
+        }
+
+        function atualizarVisibilidadeQuestao() {
+            const questoes = document.querySelectorAll('.questao');
+            questoes.forEach((q, idx) => {
+                if (idx === questaoAtualIdx) {
+                    q.classList.add('ativa');
+                } else {
+                    q.classList.remove('ativa');
+                }
+            });
+            document.getElementById('idx-questao').innerText = questaoAtualIdx + 1;
+        }
+
+        function avancarQuestao() {
+            const questoes = document.querySelectorAll('.questao');
+            
+            if (!respostasMarcadas[questaoAtualIdx]) {
+                alert("Por favor, selecione uma alternativa antes de seguir.");
+                return;
+            }
+
+            if (questaoAtualIdx < questoes.length - 1) {
+                questaoAtualIdx++;
+                atualizarVisibilidadeQuestao();
+                if (questaoAtualIdx === questoes.length - 1) {
+                    document.getElementById('proximaQuestaoBtn').innerText = "Finalizar e Ver Resultados";
+                }
+            } else {
+                // Cálculo de Rendimento Final
+                let acertos = 0;
+                questoes.forEach((q, idx) => {
+                    if (respostasMarcadas[idx] === q.getAttribute('data-correta')) {
+                        acertos++;
+                    }
+                });
+
+                const porcentagemFinal = (acertos / 10) * 100;
+                
+                // --- ATUALIZAÇÃO AUTOMÁTICA DAS MÉTRICAS DO DASHBOARD ---
+                document.getElementById('rendimento-usuario').innerText = porcentagemFinal + "%";
+                document.getElementById('barra-usuario').style.width = porcentagemFinal + "%";
+                
+                const badgeUser = document.getElementById('badge-usuario');
+                if (porcentagemFinal >= 70) {
+                    badgeUser.innerText = "Concluído";
+                    badgeUser.className = "badge success";
+                } else {
+                    badgeUser.innerText = "Recuperação";
+                    badgeUser.className = "badge warning";
+                }
+
+                alert(`Questionário concluído!\nVocê acertou ${acertos} de 10 questões (${porcentagemFinal}%). Os dados foram sincronizados com seu Dashboard abaixo.`);
+                fecharQuiz();
+                window.location.href = '#dashboard';
+            }
+        }
+
+        // --- SISTEMA INTEGRO DO DASHBOARD (Mantido Conforme Item 3) ---
+        function filtrarStatus(status) {
+            const botoes = document.querySelectorAll('.filter-btn');
+            botoes.forEach(b => b.classList.remove('active'));
+            
+            if(status === 'todos') document.getElementById('flt-todos').classList.add('active');
+            if(status === 'Concluído') document.getElementById('flt-concluido').classList.add('active');
+            if(status === 'Em Andamento') document.getElementById('flt-andamento').classList.add('active');
+
+            const linhas = document.querySelectorAll('#tabela-simulacoes tbody tr');
+            linhas.forEach(linha => {
+                const statusLinha = linha.getAttribute('data-status');
+                if (status === 'todos' || statusLinha === status) {
+                    linha.style.display = 'table-row';
+                } else {
+                    linha.style.display = 'none';
+                }
+            });
+        }
+
+        // Modais Auxiliares
+        function abrirLogin() { document.getElementById('modalLogin').style.display = 'flex'; }
+        function fecharLogin() { document.getElementById('modalLogin').style.display = 'none'; }
     </script>
 </body>
 </html>
